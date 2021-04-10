@@ -17,10 +17,10 @@
 		"ts-node-dev": "^1.1.6"
 	},
 	"scripts": {
-		"start": "ts-node-dev --respawn --transpile-only  src/server.ts",
+		"start:dev": "ts-node-dev --respawn --transpile-only  src/server.ts",
 		"dev": "docker-compose up",
 		"build": "yarn babel src --extensions \".ts\" --out-dir dist --copy-files",
-		"start:prod": "yarn build && node ./dist/server.js"
+		"start": "yarn build && node ./dist/server.js"
 	},
 	"devDependencies": {
 		"@types/jsonwebtoken": "^8.5.1",
