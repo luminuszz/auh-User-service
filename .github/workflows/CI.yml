@@ -1,0 +1,39 @@
+name: "Deploy-dev"
+
+on:
+    pull_request:
+        types: [assigned,opened]
+        branches: [master]
+
+jobs:
+    deploy_to_develop:
+        name: "Deploy on dev"
+        runs-on: "ubuntu-latest"
+        env:
+            JWT_SECRET: ${{ secrets.JWT_SECRET }}
+            MONGO_URL_CONNECT: ${{ secrets.MONGO_URL_CONNECT }}
+        steps:
+            - uses: actions/checkout@v2
+            
+            - name: setup_node
+              uses: actions/setup-node@v2
+              with:
+                node-version: 12.x 
+            
+            - name: Install dependences
+              run: yarn
+              
+            - name: Run buidl
+              run: yarn build
+              
+           
+            - name: Copy to Digital Ocean build
+              uses: appleboy/scp-action@master
+              with:
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USER }}
+                key: ${{ secrets.SSH_KEY }}
+                port: ${{ secrets.SSH_PORT }}
+                source: "dist"
+                target: "teste"
+              
