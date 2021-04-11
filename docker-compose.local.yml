@@ -1,16 +1,16 @@
-version: '2.2'
+version: "2.2"
 
 services:
-  database:
-    container_name: api-database
-    image: mongo
-    ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+    database:
+        container_name: api-database
+        image: mongo
+        ports:
+            - ${MONGO_PORT}:${MONGO_PORT}
 
-  api:
-    container_name: api-fastify-auth-user
-    build: .
-    ports:
-      - ${PORT}:${PORT}
-    volumes:
-      - .:/home/api
+    api:
+        container_name: api-fastify-auth-user
+        build: .
+        ports:
+            - ${PORT}:${PORT}
+        volumes:
+            - .:/home/api
