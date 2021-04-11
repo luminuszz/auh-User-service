@@ -1,4 +1,4 @@
-import { FastifyInstance } from "fastify";
+import fastfy, { FastifyInstance } from "fastify";
 import { routes } from "./routes";
 import { UsersRoutes } from "./routes/users.route";
 import { connectionDb } from "./database/connection";
