@@ -1,8 +1,8 @@
 name: "Deploy-dev"
 
 on:
-    pull_request_target:
-        types: [assigned]
+    pull_request:
+        types: [assigned,opened]
         branches: [master]
 
 jobs:
